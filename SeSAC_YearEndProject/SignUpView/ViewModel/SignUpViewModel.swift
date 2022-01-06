@@ -13,7 +13,7 @@ class SignUpViewModel {
     var password: Observable<String> = Observable("")
     var passwordConform: Observable<String> = Observable("")
     
-    func userRegister(completion: @escaping () -> Void) {
+    func userRegister(completion: @escaping (APIStatus) -> Void) {
         // 1. 입력한 값이 없는지, 이메일 형식 맞는지(정규식), 다른것들이 맞는지 무선 확인
         if checkInputvalue() {
             APIService.register(username: nickname.value, email: email.value, password: password.value) { userData, error in
@@ -21,7 +21,7 @@ class SignUpViewModel {
                 // userData가 옵셔널 타입이기 때문에 옵셔널 해제를 해줘야함
                 guard let userData = userData else {
                     print(error?.rawValue ?? "옵셔널해제 실패")
-                    completion()
+                    completion(.fail)
                     return
                 }
                 
@@ -36,10 +36,10 @@ class SignUpViewModel {
                 UserDefaults.standard.set(userData.user.id, forKey: "id")
                 UserDefaults.standard.set(userData.user.email, forKey: "email")
                 
-                completion()
+                completion(.success)
             }
         } else {
-            completion()
+            completion(.fail)
         }
         
         

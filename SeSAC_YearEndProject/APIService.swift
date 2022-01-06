@@ -13,6 +13,7 @@ enum APIError: Error {
     case noData
     case failed
     case invalidData
+    case tokenExpire
     
     var rawValue: String {
         switch self {
@@ -24,11 +25,18 @@ enum APIError: Error {
             return "failed"
         case .invalidData:
             return "invalidData"
+        case .tokenExpire:
+            return "tokenExpire"
         }
     }
 }
 
 class APIService {
+    
+    static var jwt: String {
+        let jwt = UserDefaults.standard.string(forKey: "token")
+        return jwt!
+    }
     
     static func login(identifier: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
         
@@ -64,11 +72,31 @@ class APIService {
     static func postRegister(text: String, jwt: String, completion: @escaping (PostRegister?, APIError?) -> Void) {
         var request = URLRequest(url: EndPoint.boards.url)
         request.httpMethod = Method.POST.rawValue
-        request.setValue("Bearer \(String(describing: jwt))", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(jwt)", forHTTPHeaderField: "Authorization")
         
         request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
         
         URLSession.request(endpoint: request, completion: completion)
     }
+    
+    static func postComments(post: String, jwt: String, completion: @escaping (Comments?, APIError?) -> Void) {
+        var request = URLRequest(url: EndPoint.boards.url)
+        request.httpMethod = Method.POST.rawValue
+        request.setValue("Bearer \(jwt)", forHTTPHeaderField: "Authorization")
         
+        request.httpBody = "post=\(post)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    static func registerComment(comment: String, post: String, completion: @escaping (PostComment?, APIError?) -> Void) {
+        var request = URLRequest(url: EndPoint.comments.url)
+        request.httpMethod = Method.POST.rawValue
+        request.setValue("Bearer \(jwt)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        request.httpBody = "comment=\(comment)&post=\(post)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
 }

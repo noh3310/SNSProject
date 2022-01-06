@@ -32,15 +32,6 @@ class EditViewController: UIViewController {
 
         view.backgroundColor = .white
         
-//        viewModel.text.bind(to: mainView.textView.rx.text)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.text
-//            .subscribe { value in
-//                mainView.textView.rx.text = value
-//            }
-//            .disposed(by: disposeBag)
-        
         viewModel.text
             .asDriver()
             .drive(mainView.textView.rx.text)

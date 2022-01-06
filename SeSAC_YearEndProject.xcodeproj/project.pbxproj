@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D32C31EA2784AE83007ECB67 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D32C31E92784AE83007ECB67 /* RxCocoa */; };
-		D32C31EC2784AE83007ECB67 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D32C31EB2784AE83007ECB67 /* RxSwift */; };
 		D32C31F32785C582007ECB67 /* APIStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C31F22785C582007ECB67 /* APIStatus.swift */; };
-		D32C31F62785C5F2007ECB67 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = D32C31F52785C5F2007ECB67 /* Toast */; };
 		D32C31FC2785E966007ECB67 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C31FB2785E966007ECB67 /* EditViewController.swift */; };
 		D32C31FE2785EA59007ECB67 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C31FD2785EA59007ECB67 /* EditViewModel.swift */; };
 		D32C32002785EC23007ECB67 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C31FF2785EC23007ECB67 /* EditView.swift */; };
 		D32C32032785F03D007ECB67 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C32022785F03D007ECB67 /* UINavigationController+Extension.swift */; };
-		D32C32062785F6FA007ECB67 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = D32C32052785F6FA007ECB67 /* RxKeyboard */; };
-		D32C32092785FA1E007ECB67 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D32C32082785FA1E007ECB67 /* IQKeyboardManagerSwift */; };
 		D32C320B2785FB3A007ECB67 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C320A2785FB3A007ECB67 /* String+Extension.swift */; };
 		D32C320D2785FDFA007ECB67 /* EditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C320C2785FDFA007ECB67 /* EditModel.swift */; };
 		D32C3214278611A4007ECB67 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C3213278611A4007ECB67 /* PostDetailViewController.swift */; };
@@ -32,7 +27,6 @@
 		D3420C5B2780DECF0014B8CA /* LayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420C5A2780DECF0014B8CA /* LayoutProtocol.swift */; };
 		D3420C5D2780DEDA0014B8CA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420C5C2780DEDA0014B8CA /* CustomTextField.swift */; };
 		D3420C5F2780DEEA0014B8CA /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420C5E2780DEEA0014B8CA /* CustomButton.swift */; };
-		D3420C622780DF390014B8CA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D3420C612780DF390014B8CA /* SnapKit */; };
 		D3420C652780E5E50014B8CA /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420C642780E5E50014B8CA /* UITextField+Extension.swift */; };
 		D3420C69278204070014B8CA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420C68278204070014B8CA /* SignUpViewController.swift */; };
 		D3420C6B27820A220014B8CA /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420C6A27820A220014B8CA /* Observable.swift */; };
@@ -50,6 +44,13 @@
 		D3420CBC27834AA60014B8CA /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420CBB27834AA60014B8CA /* BoardTableViewCell.swift */; };
 		D3420CBE27834AD50014B8CA /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420CBD27834AD50014B8CA /* BoardViewModel.swift */; };
 		D3420CC027834ADD0014B8CA /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420CBF27834ADD0014B8CA /* BoardModel.swift */; };
+		D386AD3F2786908D00DE59B2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD3E2786908D00DE59B2 /* IQKeyboardManagerSwift */; };
+		D386AD422786909F00DE59B2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD412786909F00DE59B2 /* RxCocoa */; };
+		D386AD442786909F00DE59B2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD432786909F00DE59B2 /* RxSwift */; };
+		D386AD47278690A800DE59B2 /* RxKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD46278690A800DE59B2 /* RxKeyboard */; };
+		D386AD4A278690B300DE59B2 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD49278690B300DE59B2 /* Toast */; };
+		D386AD4D278690C400DE59B2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD4C278690C400DE59B2 /* SnapKit */; };
+		D386AD512786CDE800DE59B2 /* InputCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386AD502786CDE800DE59B2 /* InputCommentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		D3420CBB27834AA60014B8CA /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
 		D3420CBD27834AD50014B8CA /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		D3420CBF27834ADD0014B8CA /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
+		D386AD502786CDE800DE59B2 /* InputCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCommentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +101,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D32C31F62785C5F2007ECB67 /* Toast in Frameworks */,
-				D32C31EC2784AE83007ECB67 /* RxSwift in Frameworks */,
-				D32C31EA2784AE83007ECB67 /* RxCocoa in Frameworks */,
-				D3420C622780DF390014B8CA /* SnapKit in Frameworks */,
-				D32C32062785F6FA007ECB67 /* RxKeyboard in Frameworks */,
-				D32C32092785FA1E007ECB67 /* IQKeyboardManagerSwift in Frameworks */,
+				D386AD442786909F00DE59B2 /* RxSwift in Frameworks */,
+				D386AD47278690A800DE59B2 /* RxKeyboard in Frameworks */,
+				D386AD422786909F00DE59B2 /* RxCocoa in Frameworks */,
+				D386AD4D278690C400DE59B2 /* SnapKit in Frameworks */,
+				D386AD4A278690B300DE59B2 /* Toast in Frameworks */,
+				D386AD3F2786908D00DE59B2 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +177,7 @@
 		D32C321027861186007ECB67 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D386AD502786CDE800DE59B2 /* InputCommentView.swift */,
 				D32C321B278614C7007ECB67 /* CommentView.swift */,
 				D32C3215278611B8007ECB67 /* PostDetailView.swift */,
 				D32C3213278611A4007ECB67 /* PostDetailViewController.swift */,
@@ -373,12 +376,12 @@
 			);
 			name = SeSAC_YearEndProject;
 			packageProductDependencies = (
-				D3420C612780DF390014B8CA /* SnapKit */,
-				D32C31E92784AE83007ECB67 /* RxCocoa */,
-				D32C31EB2784AE83007ECB67 /* RxSwift */,
-				D32C31F52785C5F2007ECB67 /* Toast */,
-				D32C32052785F6FA007ECB67 /* RxKeyboard */,
-				D32C32082785FA1E007ECB67 /* IQKeyboardManagerSwift */,
+				D386AD3E2786908D00DE59B2 /* IQKeyboardManagerSwift */,
+				D386AD412786909F00DE59B2 /* RxCocoa */,
+				D386AD432786909F00DE59B2 /* RxSwift */,
+				D386AD46278690A800DE59B2 /* RxKeyboard */,
+				D386AD49278690B300DE59B2 /* Toast */,
+				D386AD4C278690C400DE59B2 /* SnapKit */,
 			);
 			productName = SeSAC_YearEndProject;
 			productReference = D3420C2F2780DDF20014B8CA /* SeSAC_YearEndProject.app */;
@@ -409,11 +412,11 @@
 			);
 			mainGroup = D3420C262780DDF20014B8CA;
 			packageReferences = (
-				D3420C602780DF390014B8CA /* XCRemoteSwiftPackageReference "SnapKit" */,
-				D32C31E82784AE83007ECB67 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				D32C31F42785C5F2007ECB67 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
-				D32C32042785F6FA007ECB67 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
-				D32C32072785FA1E007ECB67 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D386AD3D2786908D00DE59B2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D386AD402786909F00DE59B2 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				D386AD45278690A800DE59B2 /* XCRemoteSwiftPackageReference "RxKeyboard" */,
+				D386AD48278690B300DE59B2 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				D386AD4B278690C400DE59B2 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = D3420C302780DDF20014B8CA /* Products */;
 			projectDirPath = "";
@@ -474,6 +477,7 @@
 				D32C3214278611A4007ECB67 /* PostDetailViewController.swift in Sources */,
 				D32C31FE2785EA59007ECB67 /* EditViewModel.swift in Sources */,
 				D32C320B2785FB3A007ECB67 /* String+Extension.swift in Sources */,
+				D386AD512786CDE800DE59B2 /* InputCommentView.swift in Sources */,
 				D32C321C278614C7007ECB67 /* CommentView.swift in Sources */,
 				D3420C5D2780DEDA0014B8CA /* CustomTextField.swift in Sources */,
 			);
@@ -689,31 +693,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D32C31E82784AE83007ECB67 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-		D32C31F42785C5F2007ECB67 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		D32C32042785F6FA007ECB67 /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		D32C32072785FA1E007ECB67 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		D386AD3D2786908D00DE59B2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -721,7 +701,31 @@
 				version = 6.5.0;
 			};
 		};
-		D3420C602780DF390014B8CA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		D386AD402786909F00DE59B2 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		D386AD45278690A800DE59B2 /* XCRemoteSwiftPackageReference "RxKeyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxKeyboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		D386AD48278690B300DE59B2 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		D386AD4B278690C400DE59B2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -732,34 +736,34 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D32C31E92784AE83007ECB67 /* RxCocoa */ = {
+		D386AD3E2786908D00DE59B2 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D32C31E82784AE83007ECB67 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		D32C31EB2784AE83007ECB67 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D32C31E82784AE83007ECB67 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		D32C31F52785C5F2007ECB67 /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D32C31F42785C5F2007ECB67 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
-		};
-		D32C32052785F6FA007ECB67 /* RxKeyboard */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D32C32042785F6FA007ECB67 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
-			productName = RxKeyboard;
-		};
-		D32C32082785FA1E007ECB67 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D32C32072785FA1E007ECB67 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = D386AD3D2786908D00DE59B2 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		D3420C612780DF390014B8CA /* SnapKit */ = {
+		D386AD412786909F00DE59B2 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D3420C602780DF390014B8CA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = D386AD402786909F00DE59B2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		D386AD432786909F00DE59B2 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D386AD402786909F00DE59B2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		D386AD46278690A800DE59B2 /* RxKeyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D386AD45278690A800DE59B2 /* XCRemoteSwiftPackageReference "RxKeyboard" */;
+			productName = RxKeyboard;
+		};
+		D386AD49278690B300DE59B2 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D386AD48278690B300DE59B2 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+		D386AD4C278690C400DE59B2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D386AD4B278690C400DE59B2 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */

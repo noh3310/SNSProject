@@ -19,9 +19,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         self.window = UIWindow(windowScene: windowScene)
+        
+        let jwt = UserDefaults.standard.string(forKey: "token") ?? nil
+        let id = UserDefaults.standard.string(forKey: "id")
+        let password = UserDefaults.standard.string(forKey: "password")
+        let signUpState = UserDefaults.standard.bool(forKey: "signUp")
+        
+        var vc: UIViewController = UIViewController()
+        // 회원가입 안했으면 회원가입 화면으로 변경
+        if !signUpState {
+            vc = SignUpViewController()
+        } else if signUpState && (jwt == nil) { // 회원가입은 했는데 토큰이 없다면 ㄹ그인으로 이동
+            vc = SignInViewController()
+        } else {    // 토큰이 있으면 홈화면으로 넘어간 후 만약 만료되었다면 다시 로그인으로 이동
+            vc = BoardViewController()
+        }
 
-        // 3. 코드로 다루는 방법
-        let vc = SignInViewController()
 
         let nav = UINavigationController(rootViewController: vc)
         // 루트뷰 컨트롤러 설정

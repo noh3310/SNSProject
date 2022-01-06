@@ -19,6 +19,7 @@ enum EndPoint {
     case login
     case boards
     case boardDetail(id: Int)
+    case comments
 }
 
 extension EndPoint {
@@ -32,6 +33,8 @@ extension EndPoint {
             return .boards
         case .boardDetail(id: let id):
             return .boardsDetail(number: id)
+        case .comments:
+            return .comments
         }
     }
 }
@@ -58,6 +61,10 @@ extension URL {
     
     static func boardsDetail(number: Int) -> URL {
         makeEndpoint("boards/\(number)")
+    }
+    
+    static var comments: URL {
+        return makeEndpoint("comments")
     }
 }
 
@@ -102,6 +109,9 @@ extension URLSession {
                 
                 // 200번으로 올바르게 왔는지
                 guard response.statusCode == 200 else {
+                    if response.statusCode == 401 {
+                        completion(nil, .tokenExpire)
+                    }
                     completion(nil, .failed)
                     return
                 }

@@ -24,16 +24,40 @@ class PostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("여기 들어왔다")
-        print((viewModel.post?.value.text ?? "기본값") as String)
-        viewModel.test.subscribe({ bearer in
-            print("asfasfsadfsadfaf")
-            print(bearer.element?.comments.count ?? "123")
-        })
+        view.backgroundColor = .white
+        
+        if let bearer = viewModel.bearer {
+            mainView.fetchData(bearer)
+        }
+        
+        mainView.commentView.textField.rx.text
+            .orEmpty
+            .bind(to: viewModel.commentText)
             .disposed(by: disposeBag)
-//        viewModel.post?.value.comments
+        
+        
+        mainView.commentView.registerButton.rx.tap
+            .bind { _ in
+                self.view.endEditing(true)
+                if (self.mainView.commentView.textField.text!.isValidString() == true) {
+                    self.viewModel.registerComment { state in
+                        if state == .success {
+                            self.view.makeToast("성공")
+                        } else {
+                            self.view.makeToast("실패")
+                        }
+                    }
+                } else {
+                    self.view.makeToast("입력값이 없습니다.")
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
-    
+    func setComments() {
+        viewModel.commentList {
+            
+        }
+    }
     
 }

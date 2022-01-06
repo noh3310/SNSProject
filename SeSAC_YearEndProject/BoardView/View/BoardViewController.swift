@@ -24,6 +24,8 @@ class BoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "새싹농장"
+        
         setBearerList()
         
         mainView.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.identifier)
@@ -46,22 +48,32 @@ class BoardViewController: UIViewController {
             .rx.itemSelected
           .subscribe(onNext: { [weak self] indexPath in
               let vc = PostDetailViewController()
-              vc.viewModel.post?.accept( (self?.viewModel.list.value[indexPath.row])!)
-              vc.viewModel.test.accept((self?.viewModel.list.value[indexPath.row])!)
+              vc.viewModel.bearer = self?.viewModel.list.value[indexPath.row]
+              vc.viewModel.post.accept((self?.viewModel.list.value[indexPath.row].id)!)
               self?.navigationController?.pushViewController(vc, animated: true)
           }).disposed(by: disposeBag)
         
-        
-        mainView.editButton.addTarget(self, action: #selector(editButtonClicked), for: .touchUpInside)
+        mainView.editButton.rx.tap
+            .bind {
+                self.navigationController?.pushViewController(EditViewController(), animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     func setBearerList() {
-        viewModel.bearerList {
-            // 코드 없으니 나중에 수정하기
+        viewModel.bearerList { state in
+            if state == .tokenExpire {
+                UserDefaults.standard.removeObject(forKey: "token".description)
+                let alert = UIAlertController(title: "토큰이 만료되었습니다.", message: "확인 버튼을 누르면 로그인 화면으로 돌아갑니다.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인", style: .default) { action in
+                    let rootVC = SignInViewController()
+                    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
+                    sceneDelegate.window?.rootViewController = rootVC
+                }
+                alert.addAction(ok)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
         }
-    }
-    
-    @objc func editButtonClicked() {
-        self.navigationController?.pushViewController(EditViewController(), animated: true)
     }
 }

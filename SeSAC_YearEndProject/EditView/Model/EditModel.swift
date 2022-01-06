@@ -38,19 +38,3 @@ struct UserInfo: Codable {
         case updatedAt = "updated_at"
     }
 }
-
-//// MARK: - User
-//struct User: Codable {
-//    let id: Int
-//    let username, email, provider: String
-//    let confirmed: Bool
-//    let blocked: JSONNull?
-//    let role: Int
-//    let createdAt, updatedAt: String
-//
-//    enum CodingKeys: String, CodingKey {
-//        case id, username, email, provider, confirmed, blocked, role
-//        case createdAt = "created_at"
-//        case updatedAt = "updated_at"
-//    }
-//}

@@ -21,6 +21,8 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "로그인"
+        
         view.backgroundColor = .white
         
         bindViewModel()
@@ -54,7 +56,9 @@ class SignInViewController: UIViewController {
         viewModel.userLogin { state in
             print("rawValue = \(state.rawValue)")
             if state == .success {
-                self.navigationController?.pushViewController(BoardViewController(), animated: true)
+                let rootVC = UINavigationController(rootViewController: BoardViewController())
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
+                sceneDelegate.window?.rootViewController = rootVC
             } else {
                 self.view.makeToast("로그인에 실패했습니다.")
             }

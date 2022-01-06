@@ -10,4 +10,5 @@ import Foundation
 enum APIStatus: String {
     case success
     case fail
+    case tokenExpire
 }

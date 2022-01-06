@@ -7,11 +7,12 @@
 
 import Foundation
 import RxRelay
+import UIKit
 
 class BoardViewModel {
     var list = BehaviorRelay<Bearers>(value: Bearers())
     
-    func bearerList(completion: @escaping () -> Void) {
+    func bearerList(completion: @escaping (APIStatus) -> Void) {
         
         guard let jwt = UserDefaults.standard.string(forKey: "token") else { return }
         
@@ -19,12 +20,15 @@ class BoardViewModel {
             // userData가 옵셔널 타입이기 때문에 옵셔널 해제를 해줘야함
             guard let bearer = bearer else {
                 print(error?.rawValue ?? "모름")
-                completion()
+                if error == .tokenExpire {
+                    completion(.tokenExpire)
+                }
+                completion(.fail)
                 return
             }
             
             self.list.accept(bearer)
-            completion()
+            completion(.success)
         }
     }
 }

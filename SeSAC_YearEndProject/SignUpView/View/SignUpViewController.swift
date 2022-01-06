@@ -71,8 +71,14 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func registerButtonClicked() {
-        viewModel.userRegister {
-            print("클릭")
+        viewModel.userRegister { state in
+            if state == .success {
+                let rootVC = UINavigationController(rootViewController: SignInViewController())
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
+                sceneDelegate.window?.rootViewController = rootVC
+            } else {
+                self.view.makeToast("회원가입에 실패하셨습니다.")
+            }
         }
     }
 }
