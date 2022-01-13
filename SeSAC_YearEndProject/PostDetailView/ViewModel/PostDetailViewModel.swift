@@ -9,7 +9,6 @@ import Foundation
 import RxRelay
 
 class PostDetailViewModel {
-    var bearer: Bearer?
     var comments = BehaviorRelay<Comments>(value: Comments())
     var postData = PublishRelay<Bearer>()
     
@@ -18,12 +17,8 @@ class PostDetailViewModel {
     var userID = BehaviorRelay<Int>(value: 0)
     
     func updatePostData() {
-        fetchPostData {
-            
-        }
-        commentList {
-            
-        }
+        fetchPostData {}
+        commentList {}
     }
     
     func fetchPostData(completion: @escaping () -> Void) {
@@ -61,7 +56,7 @@ class PostDetailViewModel {
                 return
             }
             
-            self.commentList {}
+            self.updatePostData()
 
             completion(.success)
         }
@@ -76,7 +71,7 @@ class PostDetailViewModel {
                 return
             }
 
-            self.commentList {}
+            self.updatePostData()
             
             completion(.success)
         }
@@ -90,6 +85,8 @@ class PostDetailViewModel {
                 completion(.fail)
                 return
             }
+            
+            self.updatePostData()
 
             completion(.success)
         }

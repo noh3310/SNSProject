@@ -40,6 +40,8 @@ class CommentTableViewCell: UITableViewCell, CustomViewProtocol {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.backgroundColor = .clear
+        
         addViews()
         makeConstraints()
     }
@@ -56,20 +58,21 @@ class CommentTableViewCell: UITableViewCell, CustomViewProtocol {
     
     func makeConstraints() {
         settingButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(10)
+            $0.top.equalToSuperview().inset(10)
+            $0.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(20)
             $0.width.equalTo(settingButton.snp.height).multipliedBy(1.0)
         }
         
         commentUserNameLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
-            $0.leading.equalToSuperview().inset(10)
+            $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalTo(settingButton.snp.leading).inset(-10)
         }
         
         commentTextLabel.snp.makeConstraints {
             $0.top.equalTo(commentUserNameLabel).offset(30)
-            $0.leading.equalToSuperview().inset(10)
+            $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalTo(settingButton.snp.leading).inset(-10)
             $0.bottom.equalToSuperview().inset(10)
         }

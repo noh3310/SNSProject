@@ -50,6 +50,7 @@
 		D3647945278B3BC300B09C41 /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3647944278B3BC300B09C41 /* ChangePasswordModel.swift */; };
 		D3647948278B52BD00B09C41 /* EditState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3647947278B52BD00B09C41 /* EditState.swift */; };
 		D3647990278E15BC00B09C41 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364798F278E15BC00B09C41 /* CommentTableViewCell.swift */; };
+		D3695863278FFFAE00924F5A /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3695862278FFFAD00924F5A /* ViewController+Extension.swift */; };
 		D386AD3F2786908D00DE59B2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD3E2786908D00DE59B2 /* IQKeyboardManagerSwift */; };
 		D386AD422786909F00DE59B2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD412786909F00DE59B2 /* RxCocoa */; };
 		D386AD442786909F00DE59B2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD432786909F00DE59B2 /* RxSwift */; };
@@ -105,6 +106,7 @@
 		D3647944278B3BC300B09C41 /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
 		D3647947278B52BD00B09C41 /* EditState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditState.swift; sourceTree = "<group>"; };
 		D364798F278E15BC00B09C41 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		D3695862278FFFAD00924F5A /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		D386AD502786CDE800DE59B2 /* InputCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCommentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,6 +284,7 @@
 				D3420C7927820EA60014B8CA /* UIColor+Extension.swift */,
 				D32C32022785F03D007ECB67 /* UINavigationController+Extension.swift */,
 				D32C320A2785FB3A007ECB67 /* String+Extension.swift */,
+				D3695862278FFFAD00924F5A /* ViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				D32C3218278611E7007ECB67 /* PostDetailViewModel.swift in Sources */,
 				D3420C352780DDF20014B8CA /* SceneDelegate.swift in Sources */,
 				D3420CC027834ADD0014B8CA /* BoardModel.swift in Sources */,
+				D3695863278FFFAE00924F5A /* ViewController+Extension.swift in Sources */,
 				D3420CAF278345F80014B8CA /* SignInViewController.swift in Sources */,
 				D3647990278E15BC00B09C41 /* CommentTableViewCell.swift in Sources */,
 				D3420CB3278348D30014B8CA /* SignInViewModel.swift in Sources */,

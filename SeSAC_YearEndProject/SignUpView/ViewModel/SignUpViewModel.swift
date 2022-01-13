@@ -40,8 +40,6 @@ class SignUpViewModel {
         } else {
             completion(.fail)
         }
-        
-        
     }
     
     func checkInputvalue() -> Bool {

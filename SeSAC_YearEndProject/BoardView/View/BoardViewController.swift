@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Toast
 
 class BoardViewController: UIViewController {
     
@@ -24,11 +25,27 @@ class BoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+        setNavigationBar()
+        
+        setTableView()
+        
+        setEditButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setBearerList() // 삭제하거나, 수정했을 때 업데이트
+    }
+    
+    func setNavigationBar() {
         title = "새싹농장"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(setButtonClicked))
         navigationItem.rightBarButtonItem?.tintColor = .black
-        
-        
+    }
+    
+    func setTableView() {
         mainView.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.identifier)
         
         viewModel.list
@@ -53,39 +70,28 @@ class BoardViewController: UIViewController {
               self.navigationController?.pushViewController(vc, animated: true)
           })
           .disposed(by: disposeBag)
-        
+    }
+    
+    func setEditButton() {
         mainView.editButton.rx.tap
             .bind {
-                self.navigationController?.pushViewController(EditViewController(), animated: true)
+                let vc = EditViewController()
+                vc.viewModel.toastText
+                    .bind { value in
+                        self.view.makeToast(value)
+                    }
+                    .disposed(by: self.disposeBag)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             .disposed(by: disposeBag)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setBearerList() // 삭제하거나, 수정했을 때 업데이트
-    }
-    
     func setBearerList() {
-        viewModel.bearerList { state in
-            if state == .tokenExpire {
-                UserDefaults.standard.removeObject(forKey: "token".description)
-                let alert = UIAlertController(title: "토큰이 만료되었습니다.", message: "확인 버튼을 누르면 로그인 화면으로 돌아갑니다.", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default) { action in
-                    let rootVC = UINavigationController(rootViewController: SignInViewController())
-                    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
-                    sceneDelegate.window?.rootViewController = rootVC
-                }
-                alert.addAction(ok)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+        viewModel.bearerList { }
     }
     
     @objc func setButtonClicked() {
-        let alert = UIAlertController(title: "원하는 설정을 클릭하세요.", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let logout = UIAlertAction(title: "로그아웃", style: .default) { action in
             let rootVC = UINavigationController(rootViewController: SignInViewController())

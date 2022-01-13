@@ -64,9 +64,4 @@ class CommentView: UIView, CustomViewProtocol {
             $0.bottom.equalToSuperview().inset(10)
         }
     }
-    
-    func fetchData(_ data: PostComment) {
-        commentUserNameLabel.text = data.user.username
-        commentTextLabel.text = data.comment
-    }
 }

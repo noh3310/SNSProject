@@ -13,6 +13,7 @@ class EditViewModel {
     var post: Int?
     var state = EditState.createPost
     var commentID: Int?
+    var toastText = PublishRelay<String>()
     
     func postRegister(completion: @escaping (APIStatus) -> Void) {
         

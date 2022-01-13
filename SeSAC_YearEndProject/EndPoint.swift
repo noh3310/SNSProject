@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Method: String {
     case GET
@@ -125,7 +126,9 @@ extension URLSession {
                 // 200번으로 올바르게 왔는지
                 guard response.statusCode == 200 else {
                     if response.statusCode == 401 {
-                        completion(nil, .tokenExpire)
+                        DispatchQueue.main.async {
+                            UIViewController.gotoLogin()
+                        }
                     }
                     completion(nil, .failed)
                     return

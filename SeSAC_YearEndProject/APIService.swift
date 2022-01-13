@@ -13,7 +13,6 @@ enum APIError: Error {
     case noData
     case failed
     case invalidData
-    case tokenExpire
     case changePassword
     
     var rawValue: String {
@@ -26,8 +25,6 @@ enum APIError: Error {
             return "failed"
         case .invalidData:
             return "invalidData"
-        case .tokenExpire:
-            return "tokenExpire"
         case .changePassword:
             return "changePassword"
         }

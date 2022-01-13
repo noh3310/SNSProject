@@ -31,10 +31,6 @@ class PostDetailViewController: UIViewController {
             self.viewModel.updatePostData()
         }
         
-        if let bearer = viewModel.bearer {
-//            mainView.fetchData(bearer)
-        }
-        
         setTableView()
         
         setNavigationBar()
@@ -46,12 +42,6 @@ class PostDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.updatePostData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
         viewModel.updatePostData()
     }
     
@@ -81,6 +71,11 @@ class PostDetailViewController: UIViewController {
                   
                   let modify = UIAlertAction(title: "댓글 수정", style: .default) { action in
                       let vc = EditViewController()
+                      vc.viewModel.toastText
+                          .bind { value in
+                              self.view.makeToast(value)
+                          }
+                          .disposed(by: self.disposeBag)
                       vc.viewModel.state = .modifyComment
                       vc.viewModel.post = row.post.id
                       vc.viewModel.commentID = row.id
@@ -128,7 +123,6 @@ class PostDetailViewController: UIViewController {
     func setPostData() {
         viewModel.postData
             .bind { bearer in
-                print("postData")
                 self.mainView.userNameLabel.text = bearer.user.username
                 self.mainView.dateLabel.text = bearer.updatedAt
                 self.mainView.textLabel.text = bearer.text
@@ -169,8 +163,12 @@ class PostDetailViewController: UIViewController {
         
         let modify = UIAlertAction(title: "글 수정", style: .default) { action in
             let vc = EditViewController()
+            vc.viewModel.toastText
+                .bind { value in
+                    self.view.makeToast(value)
+                }
+                .disposed(by: self.disposeBag)
             vc.viewModel.post = self.viewModel.post.value
-            vc.viewModel.text.accept(self.viewModel.bearer?.text ?? "")
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

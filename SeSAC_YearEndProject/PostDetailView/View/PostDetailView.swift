@@ -13,7 +13,11 @@ class PostDetailView: UIView, CustomViewProtocol {
     
     var viewList = [CommentView]()
     
-    let tableView = UITableView()
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        return tableView
+    }()
     
     let scrollView: UIScrollView =  {
         let scrollView = UIScrollView()
