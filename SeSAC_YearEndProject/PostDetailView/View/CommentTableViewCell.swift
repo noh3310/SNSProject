@@ -1,13 +1,18 @@
 //
-//  CommentView.swift
+//  CommentTableViewCell.swift
 //  SeSAC_YearEndProject
 //
-//  Created by 노건호 on 2022/01/06.
+//  Created by 노건호 on 2022/01/12.
 //
 
 import UIKit
+import RxSwift
 
-class CommentView: UIView, CustomViewProtocol {
+class CommentTableViewCell: UITableViewCell, CustomViewProtocol {
+    
+    static let identifier = "CommentTableViewCell"
+    
+    var disposeBag = DisposeBag()
     
     let commentUserNameLabel: UILabel = {
         let label = UILabel()
@@ -27,8 +32,13 @@ class CommentView: UIView, CustomViewProtocol {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addViews()
         makeConstraints()
@@ -65,8 +75,4 @@ class CommentView: UIView, CustomViewProtocol {
         }
     }
     
-    func fetchData(_ data: PostComment) {
-        commentUserNameLabel.text = data.user.username
-        commentTextLabel.text = data.comment
-    }
 }

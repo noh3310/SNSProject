@@ -44,6 +44,12 @@
 		D3420CBC27834AA60014B8CA /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420CBB27834AA60014B8CA /* BoardTableViewCell.swift */; };
 		D3420CBE27834AD50014B8CA /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420CBD27834AD50014B8CA /* BoardViewModel.swift */; };
 		D3420CC027834ADD0014B8CA /* BoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3420CBF27834ADD0014B8CA /* BoardModel.swift */; };
+		D364793E278B18C800B09C41 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364793D278B18C800B09C41 /* ChangePasswordViewController.swift */; };
+		D3647940278B19CD00B09C41 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364793F278B19CD00B09C41 /* ChangePasswordView.swift */; };
+		D3647942278B253900B09C41 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3647941278B253900B09C41 /* ChangePasswordViewModel.swift */; };
+		D3647945278B3BC300B09C41 /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3647944278B3BC300B09C41 /* ChangePasswordModel.swift */; };
+		D3647948278B52BD00B09C41 /* EditState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3647947278B52BD00B09C41 /* EditState.swift */; };
+		D3647990278E15BC00B09C41 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364798F278E15BC00B09C41 /* CommentTableViewCell.swift */; };
 		D386AD3F2786908D00DE59B2 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD3E2786908D00DE59B2 /* IQKeyboardManagerSwift */; };
 		D386AD422786909F00DE59B2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD412786909F00DE59B2 /* RxCocoa */; };
 		D386AD442786909F00DE59B2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D386AD432786909F00DE59B2 /* RxSwift */; };
@@ -93,6 +99,12 @@
 		D3420CBB27834AA60014B8CA /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
 		D3420CBD27834AD50014B8CA /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		D3420CBF27834ADD0014B8CA /* BoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardModel.swift; sourceTree = "<group>"; };
+		D364793D278B18C800B09C41 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		D364793F278B19CD00B09C41 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		D3647941278B253900B09C41 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		D3647944278B3BC300B09C41 /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
+		D3647947278B52BD00B09C41 /* EditState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditState.swift; sourceTree = "<group>"; };
+		D364798F278E15BC00B09C41 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		D386AD502786CDE800DE59B2 /* InputCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCommentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				D32C31F22785C582007ECB67 /* APIStatus.swift */,
+				D3647947278B52BD00B09C41 /* EditState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -177,6 +190,7 @@
 		D32C321027861186007ECB67 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D364798F278E15BC00B09C41 /* CommentTableViewCell.swift */,
 				D386AD502786CDE800DE59B2 /* InputCommentView.swift */,
 				D32C321B278614C7007ECB67 /* CommentView.swift */,
 				D32C3215278611B8007ECB67 /* PostDetailView.swift */,
@@ -229,6 +243,7 @@
 				D3420CB427834A640014B8CA /* BoardView */,
 				D32C31F72785E936007ECB67 /* EditView */,
 				D32C320F27861178007ECB67 /* PostDetailView */,
+				D364793A278B18A000B09C41 /* ChangePasswordView */,
 				D3420C322780DDF20014B8CA /* AppDelegate.swift */,
 				D3420C342780DDF20014B8CA /* SceneDelegate.swift */,
 				D3420C362780DDF20014B8CA /* ViewController.swift */,
@@ -359,6 +374,41 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D364793A278B18A000B09C41 /* ChangePasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				D3647943278B3BB600B09C41 /* Model */,
+				D364793C278B18B400B09C41 /* ViewModel */,
+				D364793B278B18AF00B09C41 /* View */,
+			);
+			path = ChangePasswordView;
+			sourceTree = "<group>";
+		};
+		D364793B278B18AF00B09C41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D364793F278B19CD00B09C41 /* ChangePasswordView.swift */,
+				D364793D278B18C800B09C41 /* ChangePasswordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D364793C278B18B400B09C41 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3647941278B253900B09C41 /* ChangePasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D3647943278B3BB600B09C41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3647944278B3BC300B09C41 /* ChangePasswordModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,9 +506,11 @@
 				D3420CB12783462F0014B8CA /* SignInView.swift in Sources */,
 				D32C3216278611B8007ECB67 /* PostDetailView.swift in Sources */,
 				D3420C652780E5E50014B8CA /* UITextField+Extension.swift in Sources */,
+				D364793E278B18C800B09C41 /* ChangePasswordViewController.swift in Sources */,
 				D32C31F32785C582007ECB67 /* APIStatus.swift in Sources */,
 				D3420C7827820D260014B8CA /* User.swift in Sources */,
 				D3420C6B27820A220014B8CA /* Observable.swift in Sources */,
+				D3647942278B253900B09C41 /* ChangePasswordViewModel.swift in Sources */,
 				D3420CB827834A860014B8CA /* BoardViewController.swift in Sources */,
 				D32C321A27861201007ECB67 /* PostDetailModel.swift in Sources */,
 				D3420C5F2780DEEA0014B8CA /* CustomButton.swift in Sources */,
@@ -467,19 +519,23 @@
 				D3420C352780DDF20014B8CA /* SceneDelegate.swift in Sources */,
 				D3420CC027834ADD0014B8CA /* BoardModel.swift in Sources */,
 				D3420CAF278345F80014B8CA /* SignInViewController.swift in Sources */,
+				D3647990278E15BC00B09C41 /* CommentTableViewCell.swift in Sources */,
 				D3420CB3278348D30014B8CA /* SignInViewModel.swift in Sources */,
 				D3420CBC27834AA60014B8CA /* BoardTableViewCell.swift in Sources */,
 				D3420C5B2780DECF0014B8CA /* LayoutProtocol.swift in Sources */,
 				D3420CBA27834A910014B8CA /* BoardView.swift in Sources */,
 				D3420CBE27834AD50014B8CA /* BoardViewModel.swift in Sources */,
+				D3647945278B3BC300B09C41 /* ChangePasswordModel.swift in Sources */,
 				D32C32002785EC23007ECB67 /* EditView.swift in Sources */,
 				D3420C7427820AD20014B8CA /* APIService.swift in Sources */,
 				D32C3214278611A4007ECB67 /* PostDetailViewController.swift in Sources */,
 				D32C31FE2785EA59007ECB67 /* EditViewModel.swift in Sources */,
 				D32C320B2785FB3A007ECB67 /* String+Extension.swift in Sources */,
 				D386AD512786CDE800DE59B2 /* InputCommentView.swift in Sources */,
+				D3647948278B52BD00B09C41 /* EditState.swift in Sources */,
 				D32C321C278614C7007ECB67 /* CommentView.swift in Sources */,
 				D3420C5D2780DEDA0014B8CA /* CustomTextField.swift in Sources */,
+				D3647940278B19CD00B09C41 /* ChangePasswordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

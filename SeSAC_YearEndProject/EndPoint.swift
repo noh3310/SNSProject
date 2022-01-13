@@ -20,6 +20,7 @@ enum EndPoint {
     case boards
     case boardDetail(id: Int)
     case comments
+    case changePassword
 }
 
 extension EndPoint {
@@ -35,6 +36,8 @@ extension EndPoint {
             return .boardsDetail(number: id)
         case .comments:
             return .comments
+        case .changePassword:
+            return .changePassword
         }
     }
 }
@@ -59,12 +62,24 @@ extension URL {
         return makeEndpoint("posts")
     }
     
+    static func post(number: Int) -> URL {
+        return makeEndpoint("posts/\(number)")
+    }
+    
+    static func modifyComment(number: Int) -> URL {
+        return makeEndpoint("comments/\(number)")
+    }
+    
     static func boardsDetail(number: Int) -> URL {
-        makeEndpoint("boards/\(number)")
+        return makeEndpoint("boards/\(number)")
     }
     
     static var comments: URL {
         return makeEndpoint("comments")
+    }
+    
+    static var changePassword: URL {
+        return makeEndpoint("custom/change-password")
     }
 }
 
@@ -84,9 +99,9 @@ extension URLSession {
     static func request<T: Decodable>(_ session: URLSession = .shared, endpoint: URLRequest, completion: @escaping (T?, APIError?) -> Void) {
         
         session.dataTask(endpoint) { data, response, error in
-            print("\(String(describing: data))")
-            print(response)
-            print(error)
+//            print("\(String(describing: data))")
+//            print(response)
+//            print(error)
             
             DispatchQueue.main.async {
                 // 에러가 nil인 경우 일찍 리턴을 해라

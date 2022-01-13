@@ -25,6 +25,12 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let post = viewModel.post {
+            print(post)
+        }
+        
+        print(viewModel.text.value)
+        
         title = "새싹농장 글쓰기"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(completionButtonClicked))
         navigationItem.rightBarButtonItem?.tintColor = .black
@@ -35,7 +41,18 @@ class EditViewController: UIViewController {
         viewModel.text
             .asDriver()
             .drive(mainView.textView.rx.text)
-//            .bind(to: mainView.textView.rx.text)     // 위 두줄이랑 같은 코드, ui에서는 위에가 조금 더 적합함
+            .disposed(by: disposeBag)
+        
+//        viewModel.text
+//            .subscribe(onNext: { value in
+//                print("value = ", value)
+//                self.mainView.textView.text = value
+//            })
+//            .disposed(by: disposeBag)
+        
+        mainView.textView.rx.text
+            .orEmpty
+            .bind(to: viewModel.text)
             .disposed(by: disposeBag)
         
         setRxKeyboard()
@@ -64,14 +81,37 @@ class EditViewController: UIViewController {
             return
         }
         
-        viewModel.postRegister { status in
-            if status == .success {
-                self.view.makeToast("등록되었습니다.")
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.view.makeToast("등록에 실패했습니다.")
+        switch viewModel.state {
+        case .createPost:
+            viewModel.postRegister { status in
+                if status == .success {
+                    self.view.makeToast("등록되었습니다.")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.view.makeToast("등록에 실패했습니다.")
+                }
+            }
+        case .modifyPost:
+            viewModel.postModify { status in
+                if status == .success {
+                    self.view.makeToast("수정되었습니다.")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.view.makeToast("수정에 실패했습니다.")
+                }
+            }
+        case .modifyComment:
+            print("수정")
+            print(viewModel.text.value)
+            print("끝")
+            viewModel.modifyComment { status in
+                if status == .success {
+//                    self.view.makeToast("수정되었습니다.")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.view.makeToast("수정에 실패했습니다.")
+                }
             }
         }
-        
     }
 }

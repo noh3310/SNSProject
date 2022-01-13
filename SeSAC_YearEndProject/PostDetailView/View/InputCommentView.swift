@@ -56,6 +56,5 @@ class InputCommentView: UIView, CustomViewProtocol {
             $0.trailing.equalTo(registerButton.snp.leading).inset(-5)
             $0.height.equalTo(40)
         }
-        
     }
 }

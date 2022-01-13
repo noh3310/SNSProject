@@ -25,12 +25,12 @@ class BoardViewController: UIViewController {
         super.viewDidLoad()
         
         title = "새싹농장"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(setButtonClicked))
+        navigationItem.rightBarButtonItem?.tintColor = .black
         
-        setBearerList()
         
         mainView.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.identifier)
         
-        // viewModel data -> tableView ??
         viewModel.list
             .asDriver(onErrorJustReturn: [])
             .drive(mainView.tableView.rx.items) { (tableView, row, element) in
@@ -46,12 +46,13 @@ class BoardViewController: UIViewController {
         
         mainView.tableView
             .rx.itemSelected
-          .subscribe(onNext: { [weak self] indexPath in
+          .subscribe(onNext: { indexPath in
               let vc = PostDetailViewController()
-              vc.viewModel.bearer = self?.viewModel.list.value[indexPath.row]
-              vc.viewModel.post.accept((self?.viewModel.list.value[indexPath.row].id)!)
-              self?.navigationController?.pushViewController(vc, animated: true)
-          }).disposed(by: disposeBag)
+              vc.viewModel.post.accept((self.viewModel.list.value[indexPath.row].id))
+              vc.viewModel.userID.accept(self.viewModel.list.value[indexPath.row].user.id)
+              self.navigationController?.pushViewController(vc, animated: true)
+          })
+          .disposed(by: disposeBag)
         
         mainView.editButton.rx.tap
             .bind {
@@ -60,13 +61,19 @@ class BoardViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setBearerList() // 삭제하거나, 수정했을 때 업데이트
+    }
+    
     func setBearerList() {
         viewModel.bearerList { state in
             if state == .tokenExpire {
                 UserDefaults.standard.removeObject(forKey: "token".description)
                 let alert = UIAlertController(title: "토큰이 만료되었습니다.", message: "확인 버튼을 누르면 로그인 화면으로 돌아갑니다.", preferredStyle: .alert)
                 let ok = UIAlertAction(title: "확인", style: .default) { action in
-                    let rootVC = SignInViewController()
+                    let rootVC = UINavigationController(rootViewController: SignInViewController())
                     let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
                     sceneDelegate.window?.rootViewController = rootVC
                 }
@@ -75,5 +82,27 @@ class BoardViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    @objc func setButtonClicked() {
+        let alert = UIAlertController(title: "원하는 설정을 클릭하세요.", message: nil, preferredStyle: .actionSheet)
+        
+        let logout = UIAlertAction(title: "로그아웃", style: .default) { action in
+            let rootVC = UINavigationController(rootViewController: SignInViewController())
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
+            sceneDelegate.window?.rootViewController = rootVC
+        }
+        
+        let changePassword = UIAlertAction(title: "비밀번호 변경", style: .default) { action in
+            self.navigationController?.pushViewController(ChangePasswordViewController(), animated: true)
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(logout)
+        alert.addAction(changePassword)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

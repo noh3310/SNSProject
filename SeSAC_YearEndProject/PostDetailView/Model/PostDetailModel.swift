@@ -37,4 +37,3 @@ struct Post: Codable {
 }
 
 typealias Comments = [PostComment]
-

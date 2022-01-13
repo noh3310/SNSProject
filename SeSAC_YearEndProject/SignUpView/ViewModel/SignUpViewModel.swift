@@ -14,7 +14,6 @@ class SignUpViewModel {
     var passwordConform: Observable<String> = Observable("")
     
     func userRegister(completion: @escaping (APIStatus) -> Void) {
-        // 1. 입력한 값이 없는지, 이메일 형식 맞는지(정규식), 다른것들이 맞는지 무선 확인
         if checkInputvalue() {
             APIService.register(username: nickname.value, email: email.value, password: password.value) { userData, error in
                 

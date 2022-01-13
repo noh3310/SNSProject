@@ -9,21 +9,38 @@ import Foundation
 import RxRelay
 
 class PostDetailViewModel {
-//    var post: BehaviorRelay<Bearer>?
-    var test = PublishRelay<Bearer>()
     var bearer: Bearer?
-    var comments = BehaviorRelay<Comments>(value: [])
+    var comments = BehaviorRelay<Comments>(value: Comments())
+    var postData = PublishRelay<Bearer>()
     
     var post = BehaviorRelay<Int>(value: 0)
     var commentText = BehaviorRelay<String>(value: "")
+    var userID = BehaviorRelay<Int>(value: 0)
+    
+    func updatePostData() {
+        fetchPostData {
+            
+        }
+        commentList {
+            
+        }
+    }
+    
+    func fetchPostData(completion: @escaping () -> Void) {
+        APIService.postInformation(postID: post.value) { data, error in
+            guard let data = data else {
+                print(error?.rawValue ?? "모름")
+                completion()
+                return
+            }
+            
+            self.postData.accept(data)
+            completion()
+        }
+    }
     
     func commentList(completion: @escaping () -> Void) {
-        
-        guard let jwt = UserDefaults.standard.string(forKey: "token") else { return }
-        
-        APIService.postComments(post: "\(post.value)", jwt: jwt) { comments, error in
-            
-            // userData가 옵셔널 타입이기 때문에 옵셔널 해제를 해줘야함
+        APIService.postComments(post: post.value) { comments, error in
             guard let comments = comments else {
                 print(error?.rawValue ?? "모름")
                 completion()
@@ -36,11 +53,39 @@ class PostDetailViewModel {
     }
     
     func registerComment(completion: @escaping (APIStatus) -> Void) {
-        print("commentText.value = \(commentText.value)")
-        print("post.value = \(post.value)")
+        
         APIService.registerComment(comment: commentText.value, post: "\(post.value)") { comments, error in
-            // userData가 옵셔널 타입이기 때문에 옵셔널 해제를 해줘야함
-            guard let comments = comments else {
+            if comments == nil {
+                print(error?.rawValue ?? "모름")
+                completion(.fail)
+                return
+            }
+            
+            self.commentList {}
+
+            completion(.success)
+        }
+    }
+    
+    func deleteComments(post: Int, completion: @escaping (APIStatus) -> Void) {
+        
+        APIService.deleteComment(postID: post) { comment, error in
+            if comment == nil {
+                print(error?.rawValue ?? "모름")
+                completion(.fail)
+                return
+            }
+
+            self.commentList {}
+            
+            completion(.success)
+        }
+    }
+    
+    func deletePost(completion: @escaping (APIStatus) -> Void) {
+        
+        APIService.deletePost(postID: post.value) { comment, error in
+            if comment == nil {
                 print(error?.rawValue ?? "모름")
                 completion(.fail)
                 return
