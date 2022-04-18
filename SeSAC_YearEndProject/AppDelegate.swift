@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "완료"
         
         // UserDefaults의 값을 모두 초기화
-//        for key in UserDefaults.standard.dictionaryRepresentation().keys {
-//            UserDefaults.standard.removeObject(forKey: key.description)
-//        }
+        for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            UserDefaults.standard.removeObject(forKey: key.description)
+        }
         
         return true
     }
