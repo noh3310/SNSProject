@@ -28,6 +28,13 @@
 - **Codable** 사용방법에 대해 배웠다.
 - **HTTP** 통신방법에 대해 배웠다.
 
+## Issue
+- SwiftyJson보다 효율적인 Json Parsing 방법
+    - Codable 사용
+- HTTP 요청 후 답변이 올때까지 UI가 멈춰있는 상황 발생
+    - DispatchQueue 사용해 별도의 Thread에서 실행
+- 
+
 ## 구현 화면
 |회원가입|로그인|
 |------|----|
